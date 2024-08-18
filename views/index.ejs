@@ -1,0 +1,46 @@
+<%- include('partials/header.ejs') %>
+    <main class="container">
+        <div class="container my-5">
+            <div class="row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg">
+              <div class="col-lg-7 p-3 p-lg-5 pt-lg-3">
+                <h1 class="display-4 fw-bold lh-1 text-body-emphasis">I Lived in Books More Than I Lived Anywhere Else</h1>
+                <p class="lead">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Neque inventore doloribus amet in iusto modi, mollitia rerum ratione excepturi architecto dolor suscipit nihil molestiae labore totam assumenda perferendis ad numquam.</p>
+                <div class="d-grid gap-2 d-md-flex justify-content-md-start mb-4 mb-lg-3">                  
+                  <a href="/books" class="btn btn-secondary mt-3">Add more books</a>
+                </div>
+              </div>
+              <div class="col-lg-4 offset-lg-1 p-0 overflow-hidden shadow-lg">
+                  <img class="rounded-lg-3" src="/images/main-art.jpg" alt="" width="720" height="600">
+              </div>
+            </div>
+          </div>
+        <div class="container-fluid py-5 text-center d-flex flex-column align-items-center">
+            <h2 class="display-6 fw-bold">Books I've Read</h2>
+            <p class="col-md-8 lead">Tiny summary but detailed notes for each. Use the ISBN number to find it from your local library or anywhere else. This page will constantly update as I read more, so bookmark it if you want to check back in a few months.</p><br>
+            <p>And please read this <a href="/FAQs" style="font-weight: bold;">FAQ page</a> about these notes, if you have any questions. You can also  <a href="http://" style="font-weight: bold;">email me</a>.
+            </p>
+           
+            
+        </div>
+        <div class="container">
+            <% books.forEach(book => { %>
+                <li class="d-flex justify-content-between align-items-center border-bottom py-3">
+                    <div class="abook" data-rating="10" data-title="You Can Negotiate Anything - by Herb Cohen" data-date="2023-08-02">
+                        <figure><a href=""><img src="<%= getCoverUrl('isbn', book.isbn, 'M') %>" loading="lazy" alt="Cover" class="img-fluid"></a></figure>
+                        <h2><%= book.title %> by <%= book.author %></h2>
+                        <small>Date read: <%= book.read_date %> How strongly I recommend it: <strong><%= book.rating %></strong>/10</small>
+                        <p><%= book.notes %>
+                        </p><p><strong><a href="">Read my notes</a></strong>, or go to the <a href="">Amazon page</a> for details and reviews.
+                        </p>
+                    </div>
+                </li>    
+        
+                    
+             
+            <% }) %>
+            
+        </div>
+
+    </main>
+
+<%- include('partials/footer.ejs') %>

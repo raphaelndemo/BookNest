@@ -1,0 +1,37 @@
+<%- include('partials/header.ejs') %>
+    <div class="container">
+        <form action="submit" method="post">
+            <div class="mb-3">
+                <label for="formGroupExampleInput" class="form-label">Book Title</label>
+                <input type="text" class="form-control" name="title" placeholder="title" required>
+              </div>
+              <div class="mb-3">
+                <label for="formGroupExampleInput2" class="form-label">Author</label>
+                <input type="text" class="form-control" name="author" placeholder="author" required>
+              </div>
+              <div class="mb-3">
+                <label for="formGroupExampleInput2" class="form-label">isbn</label>
+                <input type="text" class="form-control" name="isbn" placeholder="isbn" required>
+              </div>
+              <div class="mb-3">
+                <label for="formGroupExampleInput2" class="form-label">read_date</label>
+                <input type="date" class="form-control" name="read_date" placeholder="date" required>
+              </div>
+              <div class="mb-3">
+                <label for="formGroupExampleInput2" class="form-label">Rating</label>
+                <input type="text" class="form-control" name="rating" placeholder="rating" required>
+              </div>
+              <div class="mb-3">
+                <label for="formGroupExampleTextarea" class="form-label">Notes</label>
+                <textarea class="form-control" name="notes" rows="12" placeholder="Enter your notes here"></textarea>
+            </div> 
+            <div id="liveAlertPlaceholder"></div>
+            <button type="submit" class="btn btn-secondary" id="liveAlertBtn">Add Book</button>            
+            
+        </form>
+          
+             
+
+          
+    </div>
+<%- include('partials/footer.ejs') %>

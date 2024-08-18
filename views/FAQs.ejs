@@ -1,0 +1,128 @@
+<%- include('partials/header.ejs') %>
+    <div class="container my-5">
+        <div class="container">
+            <h1 class="display-2 fw-bold py-3">FAQs</h1>
+            <div class="">
+
+                <!--accordion-->
+                <div class="accordion" id="chapters">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading-1">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#chapter-1" aria-expanded="true" aria-controls="chapter-1">
+                                About my book notes
+                            </button>
+                        </h2>
+                        <div id="chapter-1" class="accordion-collapse collapse show" aria-labelledby="heading-1" data-bs-parent="#chapters">
+                            <div class="accordion-body">
+                                <p>When I’m reading and come across a surprising or inspiring idea, I save it.      That’s all my notes are. I’m not summarizing the book. I’m just saving ideas for myself, for later reflection.                                     If I’m reading a book about a subject I already know well, I’ll have very few notes, because not much surprised me.               
+                                I kept these notes private for years, but decided it couldn’t hurt to put them on my site.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading-2">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#chapter-2" aria-expanded="true" aria-controls="chapter-2">
+                                Notes don’t replace the book
+                            </button>
+                        </h2>
+                        <div id="chapter-2" class="accordion-collapse collapse" aria-labelledby="heading-2" data-bs-parent="#chapters">
+                            <div class="accordion-body">
+                                <p>It makes me sad when people email to say thanks for my notes because it saved them time from reading the book.
+
+                                    My notes are just some tiny tidbits with no context. It’s like reading a punchline without the joke. If you hear an elaborate joke, then the punchline — (“The little piece of rope said, ‘No. I’m a frayed knot!’”) — is all you need to remember the full joke. But if you just hear the punchline, without the joke, it makes no sense. I just save the punchlines to remind myself what I’ve read.
+                                    
+                                    Again: these notes are really just for me but I’m sharing them on my site.
+                                    
+                                    If you look through a book’s notes and like the ideas, please go read the whole book. It gives so much more context and meaning.
+                                    
+                                    </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading-3">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#chapter-3" aria-expanded="true" aria-controls="chapter-3">
+                                How do you choose the rating?
+                            </button>
+                        </h2>
+                        <div id="chapter-3" class="accordion-collapse collapse" aria-labelledby="heading-3" data-bs-parent="#chapters">
+                            <div class="accordion-body">
+                                <p>My 0-10 rating is not just how much I liked the book. It’s how strongly I would recommend it to almost anyone. So I would give a little lower rating to a book I loved about an obscure subject, like the culture of Switzerland, because I wouldn’t recommend it to most people.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading-4">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#chapter-4" aria-expanded="true" aria-controls="chapter-4">
+                                Don’t the authors get mad?
+                            </button>
+                        </h2>
+                        <div id="chapter-4" class="accordion-collapse collapse" aria-labelledby="heading-4" data-bs-parent="#chapters">
+                            <div class="accordion-body">
+                                No, but this was my biggest surprise!
+
+                                The main reason I didn’t post these for years is because I assumed it was against copyright law. But I quietly tried it, without announcing it.
+
+                                Then as the site got more popular, I was scared I’d get in trouble, but instead I got emails of thanks from the authors of those books. Maybe especially since I really am trying to get people to go buy the books whose notes they like.
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                </div>
+
+        </div>
+        <div class="row my-5">
+            <div class="col-md-6">
+                <img src="/images/bookstand.jpg" class="img-fluid" alt="">
+            </div>
+            <div class="col-md-6 ">
+                <h3 class="display-6 fw-bold">Your Thoughts?</h3><br>
+                <blockquote class="blockquote">
+                    <p>Please Leave A Comment:</p>
+                </blockquote>
+                <form action="/submit-comment" method="post">
+                    <div class="mb-3">
+                        <label for="formGroupExampleInput2" class="form-label fw-bold">Your Name</label>
+                        <input type="text" class="form-control" name="name" placeholder="name" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="formGroupExampleInput2" class="form-label fw-bold">Your Email<mark>(Private For My Eyes Only)</mark></label>
+                        <input type="text" class="form-control" name="email" placeholder="email" required>
+                    </div>                    
+                    <div class="mb-3">
+                        <label for="formGroupExampleTextarea" class="form-label fw-bold">Comment</label>
+                        <textarea class="form-control" name="comment" rows="6" placeholder=""></textarea>
+                    </div> 
+                    <button type="submit" class="btn btn-secondary" id="postComment">Post Comment</button>
+                    
+
+                </form>
+                
+                
+            </div>
+        </div>
+        <div class="container my-3">
+            <h2 class="display-3 fw-bold py-3">Comments</h2>
+            <ul class="list-unstyled">
+                <% comments.forEach(comment => { %>
+                    <li class="d-flex justify-content-between align-items-center border-bottom py-3">
+                        <div class="container">
+                            <figure>
+                                <blockquote class="blockquote fw-bold">
+                                  <p><%= comment.name %></p>
+                                </blockquote>
+                                <figcaption class="blockquote-footer">
+                                    <p><%= moment().format('ddd DD MMM YYYY') %></p>                                  
+                                </figcaption>
+                            </figure>                   
+                            
+                            <p><%= comment.comment %></p>
+                        </div>
+                    </li>
+                <% }) %>
+            </ul>
+        </div>
+    </div>
+    
+<%- include('partials/footer.ejs') %>
