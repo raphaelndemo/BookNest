@@ -3,18 +3,22 @@ import bodyParser from "body-parser";
 import axios from "axios";
 import pg from "pg";
 import moment from "moment";
+import dotenv from "dotenv";
 
+dotenv.config();
 const app = express();
 const hostname = 'localhost';
 const port = 3000;
 const API_URL = "https://covers.openlibrary.org/b";
 const db = new pg.Client({
-    user: "postgres",
-    host: "localhost",
-    database: "Book_tracker",
-    password: "romC0mmun_ist",
-    port: 5432
+    user: process.env.DB_USER,
+    host: process.env.DB_HOST,
+    database: process.env.DB_NAME,
+    password: process.env.DB_PASSWORD,
+    port: process.env.DB_PORT
 });
+
+
 
 db.connect(err => {
     if (err) {
